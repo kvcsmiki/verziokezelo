@@ -35,5 +35,18 @@ namespace Verziokezelo
             return command;
         }
 
+        public void CopyFiles()
+        {
+            String[] file = File.ReadAllLines(this.Destination + @"\objects.txt");
+
+            for(int i=0;i<file.Length;i++)
+            {
+                if (!file[0].Equals("R"))
+                {
+                    File.Copy(file[2], this.Destination + @"\" + file[2]);
+                }
+            }
+        }
+
     }
 }

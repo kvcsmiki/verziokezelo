@@ -9,6 +9,8 @@
 
             Console.WriteLine(hgtool.CreateHGCommand());
             commandTool.ExecuteCommand(hgtool.CreateHGCommand());
+
+            hgtool.CopyFiles();
         }
     }
 }
