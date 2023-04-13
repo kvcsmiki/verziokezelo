@@ -41,9 +41,10 @@ namespace Verziokezelo
 
             for(int i=0;i<file.Length;i++)
             {
-                if (!file[0].Equals("R"))
+                string[] line = file[i].Split(" ");
+                if (!line[0].Equals("R"))
                 {
-                    File.Copy(this.Path + @"\" + file[2], this.Destination + @"\" + file[2]);
+                    File.Copy(this.Path + @"\" + line[1], this.Destination + @"\" + line[1]);
                 }
             }
         }
