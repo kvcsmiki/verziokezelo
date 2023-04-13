@@ -44,6 +44,10 @@ namespace Verziokezelo
                 string[] line = file[i].Split(" ");
                 if (!line[0].Equals("R"))
                 {
+                    string[] splitted = line[1].Split(@"\");
+                    if (!Directory.Exists(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""))){
+                        Directory.CreateDirectory(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""));
+                    }
                     File.Copy(this.Path + @"\" + line[1], this.Destination + @"\" + line[1]);
                 }
             }
