@@ -43,7 +43,7 @@ namespace Verziokezelo
             {
                 if (!file[0].Equals("R"))
                 {
-                    File.Copy(file[2], this.Destination + @"\" + file[2]);
+                    File.Copy(this.Path + @"\" + file[2], this.Destination + @"\" + file[2]);
                 }
             }
         }
