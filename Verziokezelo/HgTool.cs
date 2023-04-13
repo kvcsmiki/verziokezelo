@@ -31,7 +31,7 @@ namespace Verziokezelo
         {
             String command = @"cd " + this.Path +
                 @" & hg status --rev " + this.OldRev + @" --rev " + this.NewRev +
-                @"  1>" + this.Destination;
+                @"  1>" + this.Destination + @"\objects.txt";
             return command;
         }
 
