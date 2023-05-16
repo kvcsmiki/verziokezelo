@@ -41,7 +41,7 @@ namespace Verziokezelo
 
             for(int i=0;i<file.Length;i++)
             {
-                string[] line = file[i].Split(" ");
+                string[] line = file[i].Split(" ", 2);
                 if (!line[0].Equals("R"))
                 {
                     string[] splitted = line[1].Split(@"\");
