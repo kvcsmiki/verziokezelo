@@ -42,7 +42,7 @@ namespace Verziokezelo
             for(int i=0;i<file.Length;i++)
             {
                 string[] line = file[i].Split(" ", 2);
-                if (!line[0].Equals("R"))
+                if (!line[0].Equals("R") && !line[1].StartsWith("."))
                 {
                     string[] splitted = line[1].Split(@"\");
                     if (!Directory.Exists(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""))){
