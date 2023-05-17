@@ -12,6 +12,9 @@
 
             Thread.Sleep(5000);
             hgtool.CopyFiles();
+
+            Thread.Sleep(5000);
+            commandTool.ExecuteCommand(hgtool.CreateRpCommand());
         }
     }
 }

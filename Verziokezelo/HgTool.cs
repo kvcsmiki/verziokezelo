@@ -35,6 +35,12 @@ namespace Verziokezelo
             return command;
         }
 
+        public string CreateRpCommand()
+        {
+            return @"cd " + this.Destination +
+                @" & rputil -ir FullExport -op teszt.ipj";
+        }
+
         public void CopyFiles()
         {
             String[] file = File.ReadAllLines(this.Destination + @"\objects.txt");
