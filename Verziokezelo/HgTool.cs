@@ -31,14 +31,14 @@ namespace Verziokezelo
         {
             String command = @"cd " + this.Path +
                 @" & hg status --rev " + this.OldRev + @" --rev " + this.NewRev +
-                @"  1>" + this.Destination + @"\objects.txt";
+                @"  1>" + this.Destination + @"\objects.txt & exit";
             return command;
         }
 
         public string CreateRpCommand()
         {
             return @"cd " + this.Destination +
-                @" & rputil -ir FullExport -op teszt.ipj";
+                @" & rputil -ir FullExport -op teszt.ipj & exit";
         }
 
         public void DuplicateFile()
