@@ -19,6 +19,7 @@ namespace Verziokezelo
             ProcessInfo.UseShellExecute = true;
 
             Process? Process = Process.Start(ProcessInfo);
+            Process.WaitForExit();
 
         }
     }
