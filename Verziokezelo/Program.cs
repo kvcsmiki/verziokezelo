@@ -10,11 +10,11 @@
             Console.WriteLine(hgtool.CreateHGCommand());
             commandTool.ExecuteCommand(hgtool.CreateHGCommand());
 
-            Thread.Sleep(5000);
             hgtool.CopyFiles();
 
-            Thread.Sleep(5000);
             commandTool.ExecuteCommand(hgtool.CreateRpCommand());
+
+            hgtool.DuplicateFile();
         }
     }
 }
