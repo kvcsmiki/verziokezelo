@@ -58,7 +58,7 @@ namespace Verziokezelo
                             line = line.Replace(number.ToString(), newNumber.ToString());
                         }
                     }
-                        writer.Write(line);
+                        writer.WriteLine(line);
                 }
                 reader.Close();
                 writer.Close();
