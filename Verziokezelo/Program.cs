@@ -14,7 +14,7 @@
 
             commandTool.ExecuteCommand(hgtool.CreateRpCommand());
 
-            hgtool.DuplicateFile();
+            hgtool.ModifyVersionNumbers();
         }
     }
 }

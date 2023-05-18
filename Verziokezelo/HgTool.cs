@@ -41,9 +41,28 @@ namespace Verziokezelo
                 @" & rputil -ir FullExport -op teszt.ipj & exit";
         }
 
-        public void DuplicateFile()
+        public void ModifyVersionNumbers()
         {
-            File.Copy(this.Destination + @"\teszt.ipj", this.Destination + @"\modified.ipj");
+            StreamReader reader = new StreamReader(this.Destination + @"\teszt.ipj");
+            string? line;
+            using (StreamWriter writer = new StreamWriter(this.Destination + @"\modified.ipj"))
+            {
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line.StartsWith("#Version"))
+                    {
+                        string version = line.Substring(line.IndexOf('"'));
+                        if (int.Parse(version.Split(".")[6].Replace('"'.ToString(),"")) == 0) {
+                            int number = int.Parse(version.Split(".")[5]);
+                            int newNumber = number - 1;
+                            line = line.Replace(number.ToString(), newNumber.ToString());
+                        }
+                    }
+                        writer.Write(line);
+                }
+                reader.Close();
+                writer.Close();
+            }
         }
 
         public void CopyFiles()
