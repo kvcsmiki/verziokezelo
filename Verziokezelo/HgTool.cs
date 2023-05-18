@@ -41,6 +41,11 @@ namespace Verziokezelo
                 @" & rputil -ir FullExport -op teszt.ipj";
         }
 
+        public void DuplicateFile()
+        {
+            File.Copy(this.Destination + @"\teszt.ipj", this.Destination + @"\modified.ipj");
+        }
+
         public void CopyFiles()
         {
             String[] file = File.ReadAllLines(this.Destination + @"\objects.txt");
