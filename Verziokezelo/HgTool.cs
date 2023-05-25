@@ -41,6 +41,12 @@ namespace Verziokezelo
                 @" & rputil -ir FullExport -op teszt.ipj & exit";
         }
 
+        public string CreateSolution()
+        {
+            return @"cd " + this.Destination +
+                @" & rputil -ir Standard -ob SolutionPack/delta/rp/Solution";
+        }
+
         public void ModifyVersionNumbers()
         {
             StreamReader reader = new StreamReader(this.Destination + @"\teszt.ipj");
@@ -109,6 +115,13 @@ namespace Verziokezelo
                 }
                 reader.Close();
             }
+        }
+
+        public void CreateSolutionStructure()
+        {
+            Directory.CreateDirectory(this.Destination + @"\SolutionPack\delta\rp");
+            Directory.CreateDirectory(this.Destination + @"\SolutionPack\delta\sysbox");
+            Directory.CreateDirectory(this.Destination + @"\SolutionPack\inforCom");
         }
 
     }
