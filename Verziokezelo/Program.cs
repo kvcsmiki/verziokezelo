@@ -15,6 +15,10 @@
             commandTool.ExecuteCommand(hgtool.CreateRpCommand());
 
             hgtool.ModifyVersionNumbers();
+
+            hgtool.CreateSolutionStructure();
+
+            commandTool.ExecuteCommand(hgtool.CreateSolution());
         }
     }
 }
