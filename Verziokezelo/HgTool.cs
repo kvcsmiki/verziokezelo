@@ -44,7 +44,7 @@ namespace Verziokezelo
         public string CreateSolution()
         {
             return @"cd " + this.Destination +
-                @" & rputil -ir Standard -ob SolutionPack/delta/rp/Solution";
+                @" & rputil -ir Standard -ob SolutionPack/delta/rp/Solution & exit";
         }
 
         public void ModifyVersionNumbers()
