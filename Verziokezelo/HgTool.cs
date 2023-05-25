@@ -99,9 +99,9 @@ namespace Verziokezelo
                         if (int.Parse(version.Split(".")[6].Replace('"'.ToString(), "")) == 0)
                         {
                             string[] splitted = filePath.Split(@"\");
-                            if (!Directory.Exists(this.Destination + @"\" + filePath.Replace(@"\" + splitted[splitted.Length -1], "")))
+                            if (!Directory.Exists(this.Destination + @"\Standard\" + filePath.Replace(@"\" + splitted[splitted.Length -1], "")))
                             {
-                                Directory.CreateDirectory(this.Destination + @"\" + filePath.Replace(@"\" + splitted[splitted.Length - 1], ""));
+                                Directory.CreateDirectory(this.Destination + @"\Standard\" + filePath.Replace(@"\" + splitted[splitted.Length - 1], ""));
                             }
                             File.Copy(this.Destination + @"\" + filePath, this.Destination + @"\Standard\" + filePath);
                         }
