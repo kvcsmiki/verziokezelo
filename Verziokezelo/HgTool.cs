@@ -79,7 +79,35 @@ namespace Verziokezelo
                         Directory.CreateDirectory(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""));
                     }
                     File.Copy(this.Path + @"\" + line[1], this.Destination + @"\" + line[1]);
+                    CopyFileIfStandard(line[1]);
+
                 }
+            }
+        }
+
+        public void CopyFileIfStandard(string filePath)
+        {
+            if (File.Exists(this.Destination + @"\" + filePath))
+            {
+                StreamReader reader = new StreamReader(this.Destination + @"\" + filePath);
+                string? line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line.StartsWith("#Version"))
+                    {
+                        string version = line.Substring(line.IndexOf('"'));
+                        if (int.Parse(version.Split(".")[6].Replace('"'.ToString(), "")) == 0)
+                        {
+                            string[] splitted = filePath.Split(@"\");
+                            if (!Directory.Exists(this.Destination + @"\" + filePath.Replace(@"\" + splitted[splitted.Length -1], "")))
+                            {
+                                Directory.CreateDirectory(this.Destination + @"\" + filePath.Replace(@"\" + splitted[splitted.Length - 1], ""));
+                            }
+                            File.Copy(this.Destination + @"\" + filePath, this.Destination + @"\Standard\" + filePath);
+                        }
+                    }
+                }
+                reader.Close();
             }
         }
 
