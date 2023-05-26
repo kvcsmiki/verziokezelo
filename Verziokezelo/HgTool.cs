@@ -154,6 +154,7 @@ namespace Verziokezelo
             Directory.Delete(this.Destination + @"\Standard", true);
             Directory.Delete(this.Destination + @"\Sysbox", true);
             File.Delete(this.Destination + @"\objects.txt");
+            File.Delete(this.Destination + @"\teszt.ipj");
         }
 
     }
