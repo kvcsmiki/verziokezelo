@@ -23,6 +23,8 @@
             hgtool.CopySysbox();
 
             commandTool.CreateZip(hgtool.Destination + @"\SolutionPack", hgtool.Destination + @"\Solution.zip");
+
+            hgtool.CleanUp();
         }
     }
 }

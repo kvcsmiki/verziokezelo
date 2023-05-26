@@ -146,5 +146,15 @@ namespace Verziokezelo
             CopyDirectory(this.Destination + @"\Sysbox", this.Destination + @"SolutionPack\delta\sysbox");
         }
 
+        public void CleanUp()
+        {
+            Directory.Delete(this.Destination + @"\FullExport", true);
+            Directory.Delete(this.Destination + @"\InforCOM", true);
+            Directory.Delete(this.Destination + @"\SolutionPack", true);
+            Directory.Delete(this.Destination + @"\Standard", true);
+            Directory.Delete(this.Destination + @"\Sysbox", true);
+            File.Delete(this.Destination + @"\objects.txt");
+        }
+
     }
 }
