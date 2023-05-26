@@ -13,7 +13,7 @@ namespace Verziokezelo
         long _newRev;
         string _destination;
 
-        public string Path { get { return _path; } }
+        public string MyPath { get { return _path; } }
         public long OldRev { get { return _oldRev; } }
         public long NewRev { get { return _newRev; } }
 
@@ -29,7 +29,7 @@ namespace Verziokezelo
 
         public string CreateHGCommand()
         {
-            String command = @"cd " + this.Path +
+            String command = @"cd " + this.MyPath +
                 @" & hg status --rev " + this.OldRev + @" --rev " + this.NewRev +
                 @"  1>" + this.Destination + @"\objects.txt & exit";
             return command;
@@ -84,7 +84,7 @@ namespace Verziokezelo
                     if (!Directory.Exists(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""))){
                         Directory.CreateDirectory(this.Destination + @"\" + line[1].Replace(@"\" + splitted[splitted.Length - 1], ""));
                     }
-                    File.Copy(this.Path + @"\" + line[1], this.Destination + @"\" + line[1]);
+                    File.Copy(this.MyPath + @"\" + line[1], this.Destination + @"\" + line[1]);
                     CopyFileIfStandard(line[1]);
 
                 }
@@ -120,8 +120,30 @@ namespace Verziokezelo
         public void CreateSolutionStructure()
         {
             Directory.CreateDirectory(this.Destination + @"\SolutionPack\delta\rp");
-            Directory.CreateDirectory(this.Destination + @"\SolutionPack\delta\sysbox");
             Directory.CreateDirectory(this.Destination + @"\SolutionPack\inforCom");
+        }
+
+        public void CopyDirectory(string sourceDir, string destinationDir)
+        {
+            var dir = new DirectoryInfo(sourceDir);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            Directory.CreateDirectory(destinationDir);
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath);
+            }
+            foreach (DirectoryInfo subDir in dirs)
+            {
+                string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                CopyDirectory(subDir.FullName, newDestinationDir);
+            }
+        }
+
+        public void CopySysbox()
+        {
+            CopyDirectory(this.Destination + @"\Sysbox", this.Destination + @"SolutionPack\delta\sysbox");
         }
 
     }

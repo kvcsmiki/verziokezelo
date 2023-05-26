@@ -19,6 +19,8 @@
             hgtool.CreateSolutionStructure();
 
             commandTool.ExecuteCommand(hgtool.CreateSolution());
+
+            hgtool.CopySysbox();
         }
     }
 }
