@@ -143,18 +143,32 @@ namespace Verziokezelo
 
         public void CopySysbox()
         {
-            CopyDirectory(this.Destination + @"\Sysbox", this.Destination + @"SolutionPack\delta\sysbox");
+            if (Directory.Exists(this.Destination + @"\Sysbox"))
+            {
+                CopyDirectory(this.Destination + @"\Sysbox", this.Destination + @"SolutionPack\delta\sysbox");
+            }
         }
 
         public void CleanUp()
         {
-            Directory.Delete(this.Destination + @"\FullExport", true);
-            Directory.Delete(this.Destination + @"\InforCOM", true);
-            Directory.Delete(this.Destination + @"\SolutionPack", true);
-            Directory.Delete(this.Destination + @"\Standard", true);
-            Directory.Delete(this.Destination + @"\Sysbox", true);
-            File.Delete(this.Destination + @"\objects.txt");
-            File.Delete(this.Destination + @"\teszt.ipj");
+            DeleteIfExists(this.Destination + @"\FullExport");
+            DeleteIfExists(this.Destination + @"\InforCOM");
+            DeleteIfExists(this.Destination + @"\SolutionPack");
+            DeleteIfExists(this.Destination + @"\Standard");
+            DeleteIfExists(this.Destination + @"\Sysbox");
+            DeleteIfExists(this.Destination + @"\objects.txt");
+            DeleteIfExists(this.Destination + @"\teszt.ipj");
+        }
+
+        public void DeleteIfExists(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path, true);
+            } else if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
         }
 
     }
